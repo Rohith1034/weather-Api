@@ -15,7 +15,7 @@ app.use(express.static(path.join(__dirname, 'public'))); // Serve static files f
 app.get("/", async(req, res) => {
     const response = await axios.get("https://api.weatherapi.com/v1/forecast.json?key=7931b0d8a0fe4328afc151038241406&q=dharmavaram", { timeout: 5000 });
         weatherData = response.data.forecast;
-        res.status(200).json(weatherData);
+        res.status(200).json({ weather: weatherData });
 });
 
 app.listen(process.env.PORT || 5000, () => {
